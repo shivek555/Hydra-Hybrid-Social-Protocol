@@ -1,0 +1,7 @@
+# Project Rules
+
+- **Strict Mode:** Never use standard SQL; all centralized data MUST go to MongoDB.
+- **Safety First:** If an agent tries to put a private DM on the blockchain, STOP and alert the user.
+- **Performance:** C++ code must use `std::unique_ptr` and avoid raw pointers to prevent memory leaks in the 24/7 node.
+- **Angular:** Do not use `HttpClient` directly; wrap all API calls in a `HydraApiService` with error handling.
+- **Blockchain:** Keep the difficulty for PoW low for the MVP so it runs on free-tier ARM instances.
