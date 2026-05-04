@@ -1,0 +1,31 @@
+<div class="chat-container">
+  <div class="chat-header">
+    <h2>Hydra Global Chat</h2>
+    <div class="connection-status" [ngClass]="{'connected': signalR.connectionState() === 'Connected'}">
+      <span class="dot"></span>
+      {{ signalR.connectionState() }}
+    </div>
+  </div>
+
+  <div class="messages-area">
+    <div *ngFor="let msg of signalR.messages()" 
+         class="message-bubble"
+         [ngClass]="{'self': msg.senderWallet === auth.walletAddress()}">
+      <div class="sender">{{ msg.senderWallet | slice:0:6 }}...{{ msg.senderWallet | slice:-4 }}</div>
+      <div class="content">{{ msg.encryptedBody }}</div>
+      <div class="timestamp">{{ msg.timestamp | date:'shortTime' }}</div>
+    </div>
+  </div>
+
+  <div class="input-area">
+    <input type="text" 
+           [ngModel]="messageInput()" 
+           (ngModelChange)="messageInput.set($event)"
+           (keyup.enter)="sendMessage()"
+           placeholder="Type a message..."
+           class="chat-input" />
+    <button class="send-btn" (click)="sendMessage()">
+      <span class="icon">🚀</span>
+    </button>
+  </div>
+</div>

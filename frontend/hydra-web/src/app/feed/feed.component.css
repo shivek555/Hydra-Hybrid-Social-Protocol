@@ -1,0 +1,118 @@
+.feed-container {
+  max-width: 700px;
+  margin: 40px auto;
+  font-family: 'Inter', sans-serif;
+}
+
+.feed-header {
+  margin-bottom: 30px;
+}
+
+.feed-header h2 {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.composer {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 16px;
+  backdrop-filter: blur(12px);
+}
+
+.compose-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.1rem;
+  resize: none;
+  height: 80px;
+  outline: none;
+}
+
+.compose-input::placeholder {
+  color: #64748b;
+}
+
+.compose-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 10px;
+}
+
+.broadcast-btn {
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.broadcast-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.broadcast-btn:disabled {
+  background: #475569;
+  color: #94a3b8;
+  cursor: not-allowed;
+}
+
+.feed-stream {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.debug-console {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  max-height: 250px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid #38bdf8;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.debug-header {
+  background: #38bdf8;
+  color: black;
+  font-weight: bold;
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.debug-logs {
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.log-entry {
+  color: #10b981;
+  font-size: 0.8rem;
+  word-wrap: break-word;
+}

@@ -1,0 +1,28 @@
+<div class="login-container">
+  <div class="glass-card">
+    <div class="logo-container">
+      <div class="hydra-logo"></div>
+      <h1>HYDRA</h1>
+      <p class="subtitle">Hybrid Social Protocol</p>
+    </div>
+
+    <div class="auth-section" *ngIf="!authService.isAuthenticated()">
+      <button class="wallet-btn metamask" (click)="connect()">
+        <span class="icon">🦊</span>
+        Connect MetaMask
+      </button>
+      <button class="wallet-btn phantom">
+        <span class="icon">👻</span>
+        Connect Phantom
+      </button>
+      <p class="terms">By connecting, you agree to our Zero-Trust Policy.</p>
+    </div>
+
+    <div class="success-section" *ngIf="authService.isAuthenticated()">
+      <div class="success-icon">✓</div>
+      <h2>Connected</h2>
+      <p class="wallet-address">{{ authService.walletAddress() | slice:0:6 }}...{{ authService.walletAddress() | slice:-4 }}</p>
+      <button class="launch-btn">Enter App</button>
+    </div>
+  </div>
+</div>

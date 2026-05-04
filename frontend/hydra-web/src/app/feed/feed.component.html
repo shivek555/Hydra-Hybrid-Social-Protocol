@@ -1,0 +1,35 @@
+<div class="feed-container">
+  <div class="feed-header">
+    <h2>Universal Feed</h2>
+    <div class="composer">
+      <textarea 
+        [ngModel]="newPostContent()" 
+        (ngModelChange)="newPostContent.set($event)"
+        placeholder="Broadcast to the ledger..."
+        class="compose-input"></textarea>
+      <div class="compose-actions">
+        <button class="broadcast-btn" (click)="broadcast()" [disabled]="!newPostContent().trim()">
+          Broadcast via Web3
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="feed-stream">
+    <ng-container *ngFor="let item of feedItems()">
+      <!-- Strategy Pattern Implementation -->
+      <ng-container [ngSwitch]="item.type">
+        <app-broadcast-item *ngSwitchCase="'broadcast'" [item]="item"></app-broadcast-item>
+        <app-story-item *ngSwitchCase="'story'" [item]="item"></app-story-item>
+        <div *ngSwitchDefault class="unknown-type">Unknown post type</div>
+      </ng-container>
+    </ng-container>
+  </div>
+  
+  <div class="debug-console">
+    <div class="debug-header">System Debug Console</div>
+    <div class="debug-logs">
+      <div *ngFor="let log of debugLogs()" class="log-entry">> {{ log }}</div>
+    </div>
+  </div>
+</div>
